@@ -16,5 +16,4 @@ First time writing kotlin,take home assignment for implementation of Airwallex A
 ./gradlew run
 ```
 
-hosted on `127.0.0.1:8080`
-
+hosted on `127.0.0.1:8080`, (Note: this doesn't have much frontend feedback yet) 
