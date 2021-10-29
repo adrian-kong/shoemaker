@@ -8,9 +8,6 @@ import io.ktor.routing.*
 import kotlinx.html.*
 
 fun HTML.index() {
-    head {
-        title("Hello from Ktor!")
-    }
     body {
         div {
             id = "root"
