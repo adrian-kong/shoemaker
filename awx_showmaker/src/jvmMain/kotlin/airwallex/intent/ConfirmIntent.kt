@@ -1,6 +1,13 @@
-package airwallex
+package airwallex.intent
 
+import airwallex.ACCESS_TOKEN
+import airwallex.API_URL
 import api.airwallex.Address
+import api.airwallex.PaymentIntentResponse
+import client
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
 
 data class AlphaMart(var shopper_email: String, var shopper_name: String)
 
@@ -80,10 +87,46 @@ data class ConfirmIntentPayload(
     var return_url: String,
 )
 
-//suspend fun confirmIntent(paymentIntent: PaymentIntent) {
-//    client.post("$API_URL/api/v1/pa//payment_intents/${paymentIntent.id}/confirm") {
+//suspend fun confirmIntent(intent: PaymentIntentResponse) {
+//    val paymentMethod = PaymentMethod()
+//    var response: HttpResponse = client.post("$API_URL/api/v1/pa/payment_intents/${intent.id}/confirm") {
 //        contentType(ContentType.Application.Json)
 //        header(HttpHeaders.Authorization, "Bearer $ACCESS_TOKEN")
-//        body = ConfirmIntentPayload()
+//        body = "{\n" +
+//                "  \"device_data\": {\n" +
+//                "    \"accept_header\": \"*/*\",\n" +
+//                "    \"browser\": {\n" +
+//                "      \"java_enabled\": false,\n" +
+//                "      \"javascript_enabled\": true,\n" +
+//                "      \"user_agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36\"\n" +
+//                "    },\n" +
+//                "    \"device_id\": \"00000000-000000000000000\",\n" +
+//                "    \"ip_address\": \"212.121.222.123\",\n" +
+//                "    \"language\": \"EN or en-US\",\n" +
+//                "    \"location\": {\n" +
+//                "      \"lat\": \"-37.81892\",\n" +
+//                "      \"lon\": \"144.95913\"\n" +
+//                "    },\n" +
+//                "    \"mobile\": {\n" +
+//                "      \"device_model\": \"Apple IPHONE 7\",\n" +
+//                "      \"os_type\": \"IOS or ANDROID\",\n" +
+//                "      \"os_version\": \"IOS 14.5\"\n" +
+//                "    },\n" +
+//                "    \"screen_color_depth\": 24,\n" +
+//                "    \"screen_height\": 1080,\n" +
+//                "    \"screen_width\": 1920,\n" +
+//                "    \"timezone\": \"-2 or 3:30\"\n" +
+//                "  },\n" +
+//                "  \"request_id\": \"${intent.request_id}\",\n" +
+//                "  \"return_url\": \"string\",\n" +
+//                "  \"verification_options\": {\n" +
+//                "    \"card\": {\n" +
+//                "      \"amount\": 0,\n" +
+//                "      \"currency\": \"CNY\",\n" +
+//                "      \"cvc\": \"string\"\n" +
+//                "    }\n" +
+//                "  }\n" +
+//                "}"
 //    }
+//    println(response.readText())
 //}

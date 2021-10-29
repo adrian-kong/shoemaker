@@ -58,6 +58,8 @@ kotlin {
         val jvmTest by getting
         val jsMain by getting {
             dependencies {
+                implementation("org.jetbrains:kotlin-styled:5.2.1-pre.148-kotlin-1.4.21")
+                implementation(npm("styled-components", "~5.2.1"))
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
 
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react:17.0.2-pre.206-kotlin-1.5.10")

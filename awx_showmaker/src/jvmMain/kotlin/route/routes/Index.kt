@@ -1,4 +1,4 @@
-package api.route.routes
+package route.routes
 
 import io.ktor.application.*
 import io.ktor.html.*
@@ -12,9 +12,6 @@ fun HTML.index() {
         title("Hello from Ktor!")
     }
     body {
-        div {
-            +"Hello from Ktor"
-        }
         div {
             id = "root"
         }

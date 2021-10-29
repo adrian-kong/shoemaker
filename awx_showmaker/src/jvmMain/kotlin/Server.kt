@@ -11,6 +11,7 @@ import io.ktor.server.netty.*
 
 var client: HttpClient = HttpClient(CIO) {
     install(JsonFeature)
+    followRedirects = true
 }
 
 fun main() {

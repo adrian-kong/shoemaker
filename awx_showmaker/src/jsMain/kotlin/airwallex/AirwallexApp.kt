@@ -1,62 +1,79 @@
 package airwallex
 
-import api.airwallex.PaymentIntentResponse
+import api.shoes
+import kotlinx.css.*
+import kotlinx.css.properties.Transforms
+import kotlinx.css.properties.translate
 import kotlinx.html.id
 import kotlinx.html.js.onClickFunction
-import org.w3c.dom.events.Event
 import react.*
 import react.dom.*
+import styled.css
+import styled.styledDiv
 
 external interface AppState : RState {
-    var submitted: Boolean
-    var paymentIntent: PaymentIntentResponse?
+//    var submitted: Boolean
+//    var paymentIntent: PaymentIntentResponse?
 }
 
 @JsExport
 class AirwallexApp : RComponent<RProps, AppState>() {
 
     override fun AppState.init() {
-        // TODO: this should refer to next_action in docs but here for now to see it kind of function.
-        submitted = false
-        paymentIntent = null
+//        // TODO: this should refer to next_action in docs but here for now to see it kind of function.
+//        submitted = false
+//        paymentIntent = null
     }
 
     override fun RBuilder.render() {
-        div("payment-form") {
-            +"Shoemaker Airwallex Payment Gateway"
+        title("Selling cool shoes! - ShoesForYou")
 
-            when (state.submitted) {
-                true -> confirmIntent()
-                false -> submitIntent()
+        styledDiv {
+            h1 { attrs.text("ShoesForYou") }
+            p { attrs.text("Buy a pair of shoe!") }
+            css {
+                fontFamily = "Monospace"
+                textAlign = TextAlign.center
+                paddingTop = 120.px
+                paddingBottom = 120.px
+            }
+        }
+        styledDiv {
+            setupShoes()
+            css {
+                fontFamily = "Monospace"
+                display = Display.flex
+                justifyContent = JustifyContent.center
             }
         }
     }
 
-    private fun RBuilder.confirmIntent() {
-        +"Enter details"
-//      coolButton("Confirm") { event -> confirmPaymentIntent() }
-    }
-
-    private fun RBuilder.submitIntent() {
-        coolButton("Submit") {
-            createPaymentIntent().then { p ->
-                // switch state
-                setState {
-                    submitted = true
-                    paymentIntent = p
+    private fun RBuilder.setupShoes() {
+        shoes.forEach { (index, shoe) ->
+            styledDiv {
+                css {
+                    margin = "50px"
+                    opacity = 0.5
+                    cursor = Cursor.default
+                    filter = "grayscale(1)"
+                    hover {
+                        opacity = 1
+                        cursor = Cursor.pointer
+                        filter = "grayscale(0)"
+                    }
                 }
-            }
-        }
-    }
 
-    /**
-     * Test UI for functionality.
-     */
-    private fun RBuilder.coolButton(name: String, click: (event: Event) -> Unit) {
-        button {
-            +name
-            attrs {
-                onClickFunction = click
+                img(src = "static/${shoe.resource}") {
+                    attrs {
+                        height = "220"
+                        width = "480"
+                        onClickFunction = {
+                            redirectPaymentLink(index)
+                        }
+                    }
+                }
+                h2("shoe_title") { attrs.text(shoe.name) }
+                p("shoe_price") { attrs.text("$${shoe.price} USD") }
             }
         }
     }
