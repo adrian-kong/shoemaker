@@ -2,14 +2,18 @@
 
 First time writing kotlin,take home assignment for implementation of Airwallex API (https://www.airwallex.com/docs/api#/Authentication/API_Access/Intro)
 
-### Features
+##
 
-- <input type="checkbox" disabled checked/> Retrieves login bearer
-- <input type="checkbox" disabled checked/> Create payment intent
-- <input type="checkbox" disabled checked/> Unit testing for create payment intent & login
-- <input type="checkbox" disabled/> Front end of the website
-- <input type="checkbox" disabled/> Parse the API from documentation
-- <input type="checkbox" disabled/> Process the payment
+| Features                                          | Done |
+| ------------------------------------------------- | ---- |
+| Retrieves login bearer  |✓|
+| Update login bearer|✓|
+| Create payment intent |✓|
+| Confirm payment intent |      |
+| Tests for payment intent|✓|
+| Create payment link|✓|
+| Test for payment link|    |
+| Simple front end |✓|
 
 ## Usage
 
