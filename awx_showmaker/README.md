@@ -23,3 +23,12 @@ Currently test payment queries
 ```
 
 hosted on `127.0.0.1:8080`, (Note: this doesn't have much frontend feedback yet) 
+
+## UI
+
+![img.png](sampleView.png)
+
+Hovering on an image css
+![](sampleView2.png)
+
+Clicking on an image would redirect to the checkout page handled by Airwallex
